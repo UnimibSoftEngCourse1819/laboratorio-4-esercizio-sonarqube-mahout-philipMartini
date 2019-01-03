@@ -35,7 +35,7 @@ import com.google.common.base.Preconditions;
  * @see FastMap
  * @see FastIDSet
  */
-public final class FastByIDMap<V> implements Serializable, Cloneable {
+public final class FastByIDMap<V extends Serializable> implements Serializable, Cloneable {
   
   public static final int NO_MAX_SIZE = Integer.MAX_VALUE;
   private static final float DEFAULT_LOAD_FACTOR = 1.5f;
