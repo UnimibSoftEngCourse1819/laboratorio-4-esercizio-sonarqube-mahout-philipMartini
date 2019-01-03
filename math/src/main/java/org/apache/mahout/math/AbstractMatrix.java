@@ -363,7 +363,13 @@ public abstract class AbstractMatrix implements Matrix {
     } else {
       // TODO: this really should just be one line:
       // TODO: new CholeskyDecomposition(this).getL().viewDiagonal().aggregate(Functions.TIMES)
-      int sign = 1;
+      return notEasyDeterminant(rows, columns);
+    }
+
+  }
+
+public double notEasyDeterminant(int rows, int columns) {
+	int sign = 1;
       double ret = 0;
 
       for (int i = 0; i < columns; i++) {
@@ -384,9 +390,7 @@ public abstract class AbstractMatrix implements Matrix {
       }
 
       return ret;
-    }
-
-  }
+}
 
   @SuppressWarnings("CloneDoesntDeclareCloneNotSupportedException")
   @Override
