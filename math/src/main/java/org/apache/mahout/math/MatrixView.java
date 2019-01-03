@@ -95,6 +95,8 @@ public class MatrixView extends AbstractMatrix {
 
   @Override
   public Matrix viewPart(int[] offset, int[] size) {
+	  super.checkDimensionsPreconditions(offset, size);
+	  /*
     if (offset[ROW] < 0) {
       throw new IndexException(offset[ROW], 0);
     }
@@ -107,6 +109,7 @@ public class MatrixView extends AbstractMatrix {
     if (offset[COL] + size[COL] > columnSize()) {
       throw new IndexException(offset[COL] + size[COL], columnSize());
     }
+    */
     int[] origin = this.offset.clone();
     origin[ROW] += offset[ROW];
     origin[COL] += offset[COL];

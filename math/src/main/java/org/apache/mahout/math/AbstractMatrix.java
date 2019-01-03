@@ -595,7 +595,13 @@ public abstract class AbstractMatrix implements Matrix {
   @Override
   public Matrix viewPart(int[] offset, int[] size) {
 
-    if (offset[ROW] < 0) {
+    checkDimensionsPreconditions(offset, size);
+
+    return new MatrixView(this, offset, size);
+  }
+
+public void checkDimensionsPreconditions(int[] offset, int[] size) throws IndexException {
+	if (offset[ROW] < 0) {
       throw new IndexException(offset[ROW], 0);
     }
     if (offset[ROW] + size[ROW] > rowSize()) {
@@ -607,9 +613,7 @@ public abstract class AbstractMatrix implements Matrix {
     if (offset[COL] + size[COL] > columnSize()) {
       throw new IndexException(offset[COL] + size[COL], columnSize());
     }
-
-    return new MatrixView(this, offset, size);
-  }
+}
 
 
   @Override
