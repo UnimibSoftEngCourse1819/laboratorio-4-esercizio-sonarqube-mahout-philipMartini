@@ -97,6 +97,9 @@ public class DefaultTreeBuilder implements TreeBuilder {
     Split best = null;
     for (int attr : attributes) {
       Split split = igSplit.computeSplit(data, attr);
+      //Segnalato Sonar come best is nullable value
+      //ma in questo caso la condizione nell'if implica che
+      //all'uscita dal for a best verrà assegnato un valore != null.
       if (best == null || best.getIg() < split.getIg()) {
         best = split;
       }
