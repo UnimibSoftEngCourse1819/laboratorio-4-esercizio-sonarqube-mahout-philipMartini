@@ -140,7 +140,10 @@ public final class SSVDHelper {
       try {
         r = new SequenceFile.Reader(fs, firstSeqFile.getPath(), conf);
         return r.getKeyClass().asSubclass(Writable.class);
-      } finally {
+      }
+      //Assicura Che la risorsa r sia chiusa inutile sostituire
+      //Con un try-with-resources
+      finally {
         Closeables.close(r, true);
       }
     }
